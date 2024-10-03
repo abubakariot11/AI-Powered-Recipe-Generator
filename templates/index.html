@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>AI Recipe Generator</title>
+</head>
+<body>
+    <h1>AI-Powered Recipe Generator</h1>
+    <form method="POST" action="/generate_recipe">
+        <label for="mood">How are you feeling?</label>
+        <input type="text" id="mood" name="mood" required>
+
+        <label for="ingredients">What ingredients do you have?</label>
+        <textarea id="ingredients" name="ingredients" required></textarea>
+
+        <label for="dietary_restrictions">Any dietary restrictions?</label>
+        <select id="dietary_restrictions" name="dietary_restrictions">
+            <option value="none">None</option>
+            <option value="vegan">Vegan</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="gluten-free">Gluten-Free</option>
+        </select>
+
+        <button type="submit">Generate Recipe</button>
+    </form>
+
+    {% if recipe %}
+        <h2>Suggested Recipe:</h2>
+        <p>{{ recipe }}</p>
+    {% endif %}
+</body>
+</html>
